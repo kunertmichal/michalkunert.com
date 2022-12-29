@@ -1,0 +1,9 @@
+---
+export interface Props {
+	class: string;
+}
+---
+
+<h2 class={`syne text-5xl font-bold ${Astro.props.class}`}>
+    <slot />
+</h2>
