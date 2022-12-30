@@ -1,19 +1,20 @@
 import React from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
 import { useMousePos } from '../hooks'
 
 const ProjectItem = ({ children, project }) => {
-  const [visibleImgUrl, setVisibleImgUrl] = React.useState(null)
+  const [isVisible, setIsVisible] = React.useState(null)
   const { x, y } = useMousePos()
   const isDesktop = matchMedia("(min-width: 768px)").matches
 
   function handleMouseOver() {
-    if (visibleImgUrl !== project.image) {
-      setVisibleImgUrl(project.image)
+    if (isVisible !== true) {
+      setIsVisible(true)
     }
   }
 
   function handleMouseLeave() {
-    setVisibleImgUrl(null)
+    setIsVisible(false)
   }
 
   return (
@@ -21,14 +22,19 @@ const ProjectItem = ({ children, project }) => {
       className="space-y-8 md:space-y-0 md:flex py-8 px-6"
 
     >
-      {isDesktop && visibleImgUrl && (
-        <img
-          src={visibleImgUrl}
-          className="hidden md:block w-[200px] h-[200px] fixed top-0 left-0 opacity-100 pointer-events-none"
-          style={{ transform: `translate(${x - 100}px, ${y - 100}px)` }}
-          alt={project.title}
-        />
-      )}
+      <AnimatePresence>
+        {isDesktop && isVisible && (
+          <motion.img
+            key={project.title}
+            src={project.image}
+            className="hidden md:block fixed top-0 left-0 pointer-events-none origin-center"
+            style={{ transform: `translate(${x - 150}px, ${y - 100}px)` }}
+            alt={project.title}
+            initial={{ opacity: 0, width: 300, height: 100 }}
+            animate={{ opacity: 1, width: 300, height: 200 }}
+          />
+        )}
+      </AnimatePresence>
       <div className="md:w-20 syne text-5xl">0{project.index + 1}.</div>
       <div
         className="md:px-10 flex-1 cursor-none"
