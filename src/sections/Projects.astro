@@ -1,0 +1,45 @@
+---
+import Badge from '../components/Badge.astro'
+import Headline from '../components/Headline.astro'
+import Link from '../components/Link.astro'
+import ProjectItem from '../components/ProjectItem.jsx'
+
+const projects = [
+    {
+        id: 1,
+        title: 'Astro',
+        description: 'The new way to build websites.',
+        url: 'https://astro.build',
+    },
+    {
+        id: 2,
+        title: 'Another project',
+        description: 'Another project.',
+        url: 'https://example.com',
+    },
+]
+---
+
+<section class="mx-auto max-w-7xl py-16 px-8">
+    <div class="text-center">
+        <Badge>Projects</Badge>
+        <Headline class="mt-8 mb-24">
+            An overview of my work
+        </Headline>
+    </div>
+    <ul class="bg-[#0D0D0D]/[45]">
+        {projects.map((project, index) => (
+            <li class="border-t border-white first:border-0">
+                <ProjectItem
+                    client:load
+                    project={{
+                        ...project,
+                        index,
+                    }}
+                >
+                    <Link href={project.url}>Visit site</Link>
+                </ProjectItem>
+            </li>
+        ))}
+    </ul>
+</section>
