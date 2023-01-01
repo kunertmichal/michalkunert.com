@@ -22,14 +22,23 @@ const projects = [
 ]
 ---
 
-<section class="mx-auto max-w-7xl py-16 px-8">
+<section class="mx-auto max-w-7xl py-16 px-8 relative">
+    <img
+        src='../../public/bg-1.png'
+        alt='bg-1'
+        class='absolute top-0 md:-top-3/4 lg:-top-full -left-1/2 max-w-full'
+    />
     <div class="text-center">
         <Badge>Projects</Badge>
-        <Headline class="mt-8 mb-24">
-            An overview of my work
+        <Headline class="mt-8 mb-24 relative">
+            <img
+                src='../../public/headline-img-1.png'
+                class='absolute left-0 top-1/2 transform -translate-y-3/4 hidden lg:block'
+            />
+            <span class="z-10 relative">An overview of my work</span>
         </Headline>
     </div>
-    <ul class="bg-[#0D0D0D]/[45]">
+    <ul class="bg-black/40 relative">
         {projects.map((project, index) => (
             <li class="border-t border-white first:border-0">
                 <ProjectItem
