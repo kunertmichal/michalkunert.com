@@ -1,0 +1,79 @@
+---
+import Badge from '../components/Badge.astro'
+import Headline from '../components/Headline.astro'
+
+const tools = [
+    {
+        name: 'HTML5',
+        image: '',
+        bg: 'bg-orange-500',
+    },
+    {
+        name: 'CSS3',
+        image: '',
+        bg: 'bg-blue-500',
+    },
+
+    {
+        name: 'TailwindCSS',
+        image: '',
+        bg: 'bg-blue-400',
+    },
+    {
+        name: 'JavaScript',
+        image: '',
+        bg: 'bg-yellow-400',
+    },
+    {
+        name: 'TypeScript',
+        image: '',
+        bg: 'bg-blue-500',
+    },
+    {
+        name: 'React',
+        image: '',
+        bg: 'bg-blue-500',
+    },
+    {
+        name: 'Vue',
+        image: '',
+        bg: 'bg-green-500',
+    },
+    {
+        name: 'Remix',
+        image: '',
+        bg: 'bg-purple-500',
+    },
+    {
+        name: 'NestJS',
+        image: '',
+        bg: 'bg-red-500',
+    },
+    {
+        name: 'Prisma',
+        image: '',
+        bg: 'bg-purple-500',
+    },
+    {
+        name: 'AWS',
+        image: '',
+        bg: 'bg-yellow-400',
+    },
+]
+---
+
+<section class="mx-auto max-w-7xl pt-16 pb-40 px-8">
+    <div class="text-center">
+        <Badge>Tools</Badge>
+        <Headline class="mt-8 mb-24 relative">
+            Tools I usually use
+        </Headline>
+        <ol class="flex justify-center">
+            {tools.map((tool, index) => (
+                <li class={`block w-24 h-24 ${tool.bg} rounded-full flex items-center justify-center`}>
+                    {tool.name}
+                </li>
+            ))}
+        </ol>
+    </div>
+</section>
