@@ -1,77 +1,83 @@
 ---
+import { Image } from '@astrojs/image/components';
 import Badge from '../components/Badge.astro'
 import Headline from '../components/Headline.astro'
 
 const tools = [
     {
+        name: 'AWS',
+        bg: 'bg-white',
+        path: '/tool-aws.png'
+    },
+    {
         name: 'HTML5',
-        image: '',
         bg: 'bg-orange-500',
+        path: '/tool-html.png'
     },
     {
         name: 'CSS3',
-        image: '',
         bg: 'bg-blue-500',
+        path: '/tool-css.png'
     },
 
     {
         name: 'TailwindCSS',
-        image: '',
         bg: 'bg-blue-400',
+        path: '/tool-tailwind.png'
     },
     {
         name: 'JavaScript',
-        image: '',
         bg: 'bg-yellow-400',
-    },
-    {
-        name: 'TypeScript',
-        image: '',
-        bg: 'bg-blue-500',
-    },
-    {
-        name: 'React',
-        image: '',
-        bg: 'bg-blue-500',
-    },
-    {
-        name: 'Vue',
-        image: '',
-        bg: 'bg-green-500',
-    },
-    {
-        name: 'Remix',
-        image: '',
-        bg: 'bg-purple-500',
+        path: '/tool-js.png'
     },
     {
         name: 'NestJS',
-        image: '',
-        bg: 'bg-red-500',
+        bg: 'bg-white',
+        path: '/tool-nestjs.png'
+    },
+    {
+        name: 'TypeScript',
+        bg: 'bg-blue-500',
+        path: '/tool-ts.png'
+    },
+    {
+        name: 'React',
+        image: 'tool',
+        bg: 'bg-blue-500',
+        path: '/tool-react.png'
+    },
+    {
+        name: 'Vue',
+        bg: 'bg-green-500',
+        path: '/tool-vue.png'
+    },
+    {
+        name: 'Remix',
+        bg: 'bg-black',
+        path: '/tool-remix.png'
     },
     {
         name: 'Prisma',
-        image: '',
-        bg: 'bg-purple-500',
-    },
-    {
-        name: 'AWS',
-        image: '',
-        bg: 'bg-yellow-400',
+        bg: 'bg-white',
+        path: '/tool-prisma.png'
     },
 ]
 ---
 
-<section class="mx-auto max-w-7xl pt-16 pb-40 px-8">
+<section class="mx-auto max-w-7xl py-16 lg:pt-24 lg:pb-40 px-8 relative z-10">
     <div class="text-center">
         <Badge>Tools</Badge>
         <Headline class="mt-8 mb-24 relative">
             Tools I usually use
         </Headline>
-        <ol class="flex justify-center">
-            {tools.map((tool, index) => (
-                <li class={`block w-24 h-24 ${tool.bg} rounded-full flex items-center justify-center`}>
-                    {tool.name}
+        <ol class="grid gap-y-6 grid-cols-3 md:grid-cols-5 justify-items-center lg:grid-cols-11">
+            {tools.map(({ path, bg, name }, index) => (
+                <li class={`block w-20 h-20 sm:w-24 sm:h-24 ${bg} rounded-full flex flex-shrink-0 items-center justify-center lg:even:mt-14 p-6`}>
+                    <img
+                        src={path}
+                        alt={name}
+                        class="max-w-full"
+                    />
                 </li>
             ))}
         </ol>
